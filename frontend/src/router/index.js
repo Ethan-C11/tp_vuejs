@@ -28,6 +28,22 @@ const router = createRouter({
       component: () => import('../views/BillCreateEditView.vue')
     },
     {
+      path: '/clients',
+      name: 'clients',
+      component: () => import('../views/ClientsView.vue')
+    },
+    {
+      path: '/client/',
+      name: 'create-client',
+      redirect: '/client/new'
+    },
+    {
+      path: '/client/:id',
+      props: true,
+      name: 'edit-client',
+      component: () => import('../views/ClientCreateEditView.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

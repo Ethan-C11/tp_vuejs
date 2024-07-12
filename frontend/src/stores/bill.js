@@ -13,6 +13,7 @@ export const useBillStore = defineStore('bill', {
   actions: {
     // on charge la liste des factures depuis la route d'api GET http://127.0.0.1/bills
     async getItems() {
+      console.log('fetch bills')
       this.loading = true
       try {
         const response = await this.$http.get('/bills')

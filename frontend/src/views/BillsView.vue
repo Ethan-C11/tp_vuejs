@@ -55,21 +55,24 @@ export default {
       loading: 'loading'
     })
   },
-  async mounted() {
-    await this.getBills()
+  created() {
+    // watch the params of the route to fetch the data again
+    this.$watch(
+      () => this.$route.params.id,
+      this.getBills,
+      // fetch the data when the view is created and the data is
+      // already being observed
+      { immediate: true }
+    )
   },
+  // async mounted() {
+  //   await this.getBills()
+  // },
   methods: {
     ...mapActions(useBillStore, {
       deleteBill: 'deleteItem',
       getBills: 'getItems'
     })
-  },
-  watch: {
-    $router(newVal) {
-      if (newVal.to == { name: 'bills' }) {
-        this.getBills()
-      }
-    }
   }
 }
 </script>

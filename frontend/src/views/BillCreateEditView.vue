@@ -284,6 +284,7 @@ import { billPrestationInterface } from '@/interfaces/bill'
 import { clients } from '@/seeds/clients.js'
 import { useBillStore } from '@/stores/bill'
 import { mapActions, mapState, mapWritableState } from 'pinia'
+import {useClientStore} from "@/stores/client.js";
 export default {
   components: {
     TableList
@@ -296,13 +297,13 @@ export default {
   },
   data() {
     return {
-      clients,
       error: false
     }
   },
   mounted() {
     // avant de monter le composant de la vue, on charge les données de la facture à éditer
     this.setBill(this.id)
+    this.setClients()
   },
   computed: {
     ...mapState(useBillStore, {
@@ -312,6 +313,10 @@ export default {
     // attention, pour pouvoir modifier les données d'un état du store (stae), il faut utiliser mpaWritableState plutôt que mapState (qui est pour la lecture seule)
     ...mapWritableState(useBillStore, {
       bill: 'item'
+    }),
+
+    ...mapWritableState(useClientStore, {
+      clients: 'items'
     }),
     // ici on a une computed classique
     isNewBill() {
@@ -344,6 +349,10 @@ export default {
       updateBill: 'updateItem',
       createBill: 'createItem',
       deleteBill: 'deleteItem'
+    }),
+
+    ...mapActions(useClientStore, {
+      setClients: 'getItems'
     }),
 
     onAddPrestation(index) {

@@ -1,5 +1,5 @@
 import express from 'express';
-import ctrl from '../../../projetvuejs/09-final-project/backend/controllers/client.mjs';
+import ctrl from '../controllers/client.mjs';
 const router = express.Router();
 // ici le / correspond à la route GET /bills/ (voir le index.mjs qui déclare l'import de ces routes avec app.use('/bills, billRoutes)
 router.get('/', ctrl.getItems)

@@ -18,6 +18,9 @@
             <RouterLink class="nav-link pb-3" aria-current="page" to="/bills">Factures</RouterLink>
           </li>
           <li class="nav-item">
+            <RouterLink class="nav-link pb-3" aria-current="page" to="/clients">Clients</RouterLink>
+          </li>
+          <li class="nav-item">
             <RouterLink class="nav-link pb-3" aria-current="page" to="/about">À propos</RouterLink>
           </li>
         </ul>
