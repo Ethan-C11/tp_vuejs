@@ -55,7 +55,7 @@
               :class="{ 'is-invalid': !bill.client }"
             >
               <option value="">Veuillez choisir un client</option>
-              <option v-for="client in clients" :value="client" :key="client.idclient">
+              <option v-for="client in clients" :value="client" :key="client.id">
                 {{ client.firstName }} {{ client.lastName }}
               </option>
             </select>
